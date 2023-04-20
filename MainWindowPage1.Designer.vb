@@ -49,8 +49,8 @@ Partial Class MainWindowPage1
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel17 = New System.Windows.Forms.Panel()
-        Me.openFile = New System.Windows.Forms.OpenFileDialog()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.openFile = New System.Windows.Forms.OpenFileDialog()
         Me.WindowPanel.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -369,10 +369,6 @@ Partial Class MainWindowPage1
         Me.Panel17.Size = New System.Drawing.Size(800, 40)
         Me.Panel17.TabIndex = 6
         '
-        'openFile
-        '
-        Me.openFile.FileName = "OpenFileDialog1"
-        '
         'Label1
         '
         Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
@@ -385,6 +381,10 @@ Partial Class MainWindowPage1
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "INVENTORY MANAGEMENT FORM"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'openFile
+        '
+        Me.openFile.FileName = "OpenFileDialog1"
         '
         'MainWindowPage1
         '

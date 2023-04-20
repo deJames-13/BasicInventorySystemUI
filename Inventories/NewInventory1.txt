@@ -11,9 +11,10 @@
 12=12,groceries,60,6,360.00
 13=13,pet supplies,100,4,400.00
 14=14,office equipment,450,1,450.00
-15=15,home decor,175,3,525.00
+15=15,home decorations,175,3,525.00
 16=16,kitchenware,90,8,720.00
 17=17,automotive,300,2,600.00
 18=18,sporting goods,120,5,600.00
 19=19,fitness,250,3,750.00
 20=20,musical instruments,600,1,600.00
+123=123,hatdogs,10,4,40.00

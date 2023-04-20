@@ -23,6 +23,7 @@
         Dim item As String = txtID.Text + "=" + ConcatStrings(datas)
         If Me.Text = "Create Item" Then
             CreateItem(item + vbCrLf)
+
         ElseIf Me.Text = "Update Item" Then
             UpdateItem(currentItemId, item)
             MainWindowPage1.dtInvent.Rows.RemoveAt(itemPos)

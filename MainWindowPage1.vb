@@ -23,26 +23,36 @@ Public Class MainWindowPage1
     ' DELETE REQUEST
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
 
+        Dim id As String
+        Dim pos As Integer
+
         If dtInvent.SelectedRows.Count > 0 Then
-            DeleteItem(dtInvent.SelectedRows(0).Cells(0).Value)
-            dtInvent.Rows.Remove(dtInvent.SelectedRows(0))
+            id = dtInvent.SelectedRows(0).Cells(0).Value
+            pos = dtInvent.SelectedRows(0).Index
         Else
-            Dim id As String = InputBox("Enter Item ID", "Delete Item")
+            id = InputBox("Enter Item ID", "Delete Item")
             If String.IsNullOrEmpty(id) Then
                 Return
             End If
-            Dim pos As Integer = IndexFromGrid(dtInvent, id)
+            pos = IndexFromGrid(dtInvent, id)
             If pos < 0 Then
                 MsgBox("Item Not Found", MsgBoxStyle.Critical, "Error")
                 Return
             End If
-            DeleteItem(id)
-            dtInvent.Rows.RemoveAt(pos)
         End If
+
+        ' Confirm Delete
+        Dim m As Integer = MsgBox("Are you sure you want to delete this item?", MsgBoxStyle.YesNo, "Confirm Delete")
+        If m = MsgBoxResult.No Then
+            Return
+        End If
+
+        DeleteItem(id)
+        dtInvent.Rows.RemoveAt(pos)
     End Sub
 
     ' SEARCH ITEM
-    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click, txtSearch.TextChanged
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click ', txtSearch.TextChanged ' (enabling this will make the search button obsolete)
         Dim datas As String() = SearchItems(txtSearch.Text)
         dtInvent.Rows.Clear()
         For row As Integer = dtInvent.RowCount To datas.Count - 1
@@ -93,5 +103,10 @@ Public Class MainWindowPage1
         Return 1
     End Function
 
-
+    ' HANDLE SELECT
+    Private Sub dtInvent_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtInvent.CellClick
+        If dtInvent.SelectedCells.Count >= 0 Then
+            dtInvent.Rows(dtInvent.SelectedCells(0).RowIndex).Selected = True
+        End If
+    End Sub
 End Class
